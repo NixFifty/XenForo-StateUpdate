@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<addon addon_id="NixFifty_StateUpdate" title="NixFifty: State Update" version_string="1.0.0" version_id="1000" url="" install_callback_class="" install_callback_method="" uninstall_callback_class="" uninstall_callback_method="">
+  <admin_navigation/>
+  <admin_permissions/>
+  <admin_style_properties/>
+  <admin_templates>
+    <template title="nf_stateupdate_user_batch_update_confirm"><![CDATA[<xen:selectunit label="{xen:phrase nf_stateupdate_set_user_state}:" name="actions[user_state]">
+	<xen:option value="0"></xen:option>
+	<xen:option value="valid">{xen:phrase valid}</xen:option>
+	<xen:option value="email_confirm">{xen:phrase awaiting_email_confirmation}</xen:option>
+	<xen:option value="email_confirm_edit">{xen:phrase awaiting_email_confirmation_from_edit}</xen:option>
+	<xen:option value="email_bounce">{xen:phrase email_invalid_bounced}</xen:option>
+	<xen:option value="moderated">{xen:phrase awaiting_approval}</xen:option>
+</xen:selectunit>]]></template>
+  </admin_templates>
+  <admin_template_modifications>
+    <modification template="user_batch_update_confirm" modification_key="nf_stateupdate_user_batch_update_confirm" description="" execution_order="10" enabled="1" action="str_replace">
+      <find><![CDATA[<xen:textboxunit label="{xen:phrase set_custom_title}:" name="actions[custom_title]" />]]></find>
+      <replace><![CDATA[<xen:include template="nf_stateupdate_user_batch_update_confirm" />
+
+$0]]></replace>
+    </modification>
+  </admin_template_modifications>
+  <code_events/>
+  <code_event_listeners>
+    <listener event_id="load_class" execute_order="10" callback_class="NixFifty_StateUpdate_Listen" callback_method="loadClass" active="1" hint="XenForo_ControllerAdmin_User" description="Listens for the XenForo_ControllerAdmin_User class."/>
+    <listener event_id="load_class" execute_order="10" callback_class="NixFifty_StateUpdate_Listen" callback_method="loadClass" active="1" hint="XenForo_DataWriter_User" description="Listens for the XenForo_DataWriter_User class."/>
+  </code_event_listeners>
+  <cron/>
+  <email_templates/>
+  <email_template_modifications/>
+  <optiongroups/>
+  <permissions>
+    <permission_groups/>
+    <permissions/>
+    <interface_groups/>
+  </permissions>
+  <phrases>
+    <phrase title="nf_stateupdate_set_user_state" version_id="1000" version_string="1.0.0"><![CDATA[Set user state]]></phrase>
+  </phrases>
+  <route_prefixes/>
+  <style_properties/>
+  <templates/>
+  <public_template_modifications/>
+  <bb_code_media_sites/>
+  <bb_codes/>
+</addon>

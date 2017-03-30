@@ -1,0 +1,5 @@
+<?php
+
+class XFCP_NixFifty_StateUpdate_XenForo_ControllerAdmin_User extends XenForo_ControllerAdmin_User {}
+
+class XFCP_NixFifty_StateUpdate_XenForo_DataWriter_User extends XenForo_DataWriter_User {}
